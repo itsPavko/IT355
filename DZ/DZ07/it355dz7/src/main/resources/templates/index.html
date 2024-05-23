@@ -1,0 +1,24 @@
+<a href="#" th:href="@{/napraviRestoran}">Napravi novi restoran</a>
+<a href="#" th:href="@{/jela}">Jela</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>Naziv</th>
+        <th>Adresa</th>
+        <th>Telefon</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="restoran : ${restorani}">
+        <td th:text="${restoran.naziv}"></td>
+        <td th:text="${restoran.adresa}"></td>
+        <td th:text="${restoran.telefon}"></td>
+        <td>
+            <a th:href="@{/azuriranjeRestorana(id=${restoran.id})}">Uredi</a>
+            <a th:href="@{/brisanjeRestorana(id=${restoran.id})}" onclick="return confirm('Da li ste sigurni da zelite obrisati ovaj restoran?')">Obrisi</a>
+        </td>
+    </tr>
+    </tbody>
+</table>

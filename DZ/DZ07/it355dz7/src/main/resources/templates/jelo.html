@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Jela</title>
+</head>
+<body>
+<h1>Jela</h1>
+<table>
+    <tr>
+        <th>Naziv</th>
+        <th>Opis</th>
+        <th>Cena</th>
+        <th>Restoran</th>
+    </tr>
+    <tr th:each="jelo : ${jela}">
+        <td th:text="${jelo.naziv}"></td>
+        <td th:text="${jelo.opis}"></td>
+        <td th:text="${jelo.cena}"></td>
+        <td th:text="${jelo.restoran.naziv}"></td>
+        <td>
+            <a th:href="@{/izmeniJelo(id=${jelo.id})}">Izmeni</a>
+            <a th:href="@{/obrisiJelo(id=${jelo.id})}">Obrisi</a>
+        </td>
+    </tr>
+</table>
+<a href="/napraviJelo">Dodaj jelo</a>
+</body>
+</html>

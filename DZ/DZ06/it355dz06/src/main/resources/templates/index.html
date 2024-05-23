@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Proizvodi</title>
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+    >
+</head>
+<body>
+<div class="container">
+    <h1>Proizvodi</h1>
+    <table class="table">
+        <tr>
+            <th>Naziv</th>
+            <th>Cena</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr th:each="proizvod : ${proizvodi}">
+            <td th:text="${proizvod.naziv}"></td>
+            <td th:text="${proizvod.cena}"></td>
+            <td><a th:href="@{/dodaj/{id}(id=${proizvod.id})}">Dodaj u korpu</a></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

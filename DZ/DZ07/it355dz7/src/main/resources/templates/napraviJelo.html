@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Napravi jelo</title>
+</head>
+<body>
+<h1>Napravi jelo</h1>
+<form th:action="@{/sacuvajJelo}" method="post">
+    <label>Naziv</label>
+    <label>
+        <input type="text" th:field="*{jelo.naziv}">
+    </label>
+    <br>
+    <label>Opis</label>
+    <label>
+        <input type="text" th:field="*{jelo.opis}">
+    </label>
+    <br>
+    <label>Cena</label>
+    <label>
+        <input type="text" th:field="*{jelo.cena}">
+    </label>
+    <br>
+    <label>Restoran</label>
+    <label>
+        <select th:field="*{restorani}">
+            <option th:each="restoran : ${restorani}"
+                    th:value="${restoran}"
+                    th:text="${restoran.naziv}">
+            </option>
+        </select>
+    </label>
+    <br>
+    <input type="submit" value="Sacuvaj">
+</form>
+</body>
+</html>

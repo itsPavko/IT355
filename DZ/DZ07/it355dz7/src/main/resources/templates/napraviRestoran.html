@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Restoran</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>
+    <th:block th:text="${restoran != null} ? 'Uredi' : 'Napravi'"></th:block>
+    Restoran
+</h1>
+<form th:object="${restoran}" th:action="@{/sacuvajRestoran}" method="post">
+    <div>
+        <label>Naziv:</label>
+        <label>
+            <input type="text" th:field="*{naziv}"/>
+        </label>
+        <span th:if="${#fields.hasErrors('naziv')}" th:errors="*{naziv}"></span>
+    </div>
+    <div>
+        <label>Adresa:</label>
+        <label>
+            <input type="text" th:field="*{adresa}"/>
+        </label>
+        <span th:if="${#fields.hasErrors('adresa')}" th:errors="*{adresa}"></span>
+    </div>
+    <div>
+        <label>Telefon:</label>
+        <label>
+            <input type="text" th:field="*{telefon}"/>
+        </label>
+        <span th:if="${#fields.hasErrors('telefon')}" th:errors="*{telefon}"></span>
+    </div>
+    <div>
+        <label>Ocena:</label>
+        <label>
+            <input type="number" th:field="*{ocena}"/>
+        </label>
+        <span th:if="${#fields.hasErrors('ocena')}" th:errors="*{ocena}"></span>
+    </div>
+    <button type="submit">Sačuvaj</button>
+</form>
+</body>
+</html>

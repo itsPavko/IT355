@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Korpa</title>
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+    >
+</head>
+<body>
+<div class="container">
+    <h1>Korpa</h1>
+    <br>
+    <div>
+        <p>Odabrali ste proizvod <span th:text="*{proizvod.naziv}"></span> sa cenom od <span th:text="*{proizvod.cena}"></span>din.</p>
+        <br>
+        <form th:action="@{/placanje}" method="post">
+            <label>Ime:</label>
+            <label>
+                <input type="text" name="ime" id="ime" placeholder="Ime">
+            </label>
+            <br>
+            <label>Adresa:</label>
+            <label>
+                <input type="text" name="adresa" id="adresa" placeholder="Adresa">
+            </label>
+            <br>
+            <button type="submit">Zavrsi kupovinu</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
