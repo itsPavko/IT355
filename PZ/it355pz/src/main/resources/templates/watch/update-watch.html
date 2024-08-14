@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #D3D3D3;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            max-width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-container h1 {
+            color: #4c566a;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-container label {
+            color: #4c566a;
+            font-weight: 500;
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+    </style>
+    <title>Watches</title>
+</head>
+
+<body>
+<div th:include="navbar/navbar :: navbar"></div>
+<br><br>
+<div class="container">
+    <div class="form-container">
+        <form th:action="@{/watches/update}" method="post" th:object="${watch}">
+            <h1>Update watch info</h1>
+            <div class="mb-3">
+                <label for="authorId" class="form-label">Company:</label>
+                <select id="authorId" name="companyId" class="form-select">
+                    <option th:each="company : ${companies}"
+                            th:value="${company.id}"
+                            th:selected="${company.id == watch.company.id}"
+                            th:text="${company.companyName}">
+                    </option>
+                </select>
+            </div>
+            <div>
+                <label for="watchId"></label>
+                <input hidden="hidden"
+                       type="number"
+                       id="watchId"
+                       name="watchId"
+                       th:value="${watch.id}">
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Image:</label>
+                <input type="text" id="image" name="image" class="form-control" th:value="${watch.image}">
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text"
+                       id="name"
+                       name="name"
+                       class="form-control"
+                       th:value="${watch.name}" required>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Price:</label>
+                <input type="number"
+                       id="price"
+                       name="price"
+                       class="form-control"
+                       th:value="${watch.price}" required>
+            </div>
+            <div class="mb-3">
+                <label for="type" class="form-label">Genre:</label>
+                <select id="type" name="type" class="form-select">
+                    <option th:each="type : ${types}"
+                            th:value="${type}"
+                            th:selected="${watch.type == type}"
+                            th:text="${type.getValue()}">
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="amount" class="form-label">Amount:</label>
+                <input type="number"
+                       id="amount"
+                       name="amount"
+                       class="form-control"
+                       th:value="${watch.amount}">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description:</label>
+                <textarea id="description"
+                          name="description"
+                          class="form-control"
+                          th:text="${watch.description}"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

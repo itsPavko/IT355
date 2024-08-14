@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://thymeleaf.org" lang="">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>IT355-PZ-Ilija</title>
+    <style>
+        body {
+            background-color: #D3D3D3;
+        }
+
+        .title-div {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .title-header {
+            color: #ffffff;
+            font-size: 4rem;
+        }
+
+        .main {
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .login-container {
+            box-shadow: 0 10px 20px rgba(254, 231, 254, 0.6);
+            padding: 30px;
+            background-color: #FFFFFFFF;
+            border-radius: 5px;
+            max-width: 400px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .login-container h1 {
+            color: #4c566a;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-container label {
+            color: #4c566a;
+            font-weight: 500;
+        }
+
+        .login-container .form-control {
+            padding: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+<section>
+
+    <div class="main">
+        <div class="login-container">
+            <h1 class="title">Create an account on our website</h1>
+            <form method="post" th:action="@{/register/save}" th:object="${user}">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" id="username" class="form-control"  th:field="*{username}"
+                           required>
+                    <p th:if="${#fields.hasErrors('username')}" class="text-danger"></p>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" class="form-control"
+                           th:field="*{password}" required>
+                    <p th:if="${#fields.hasErrors('password')}" class="text-danger"></p>
+                </div>
+                <div class="mb-3">
+                    <label for="cardNumber" class="form-label">Card number</label>
+                    <input type="text" id="cardNumber" class="form-control"
+                           th:field="*{wallet.cardNumber}" required>
+                    <p th:if="${#fields.hasErrors('wallet.cardNumber')}" class="text-danger"></p>
+                </div>
+                <div class="mb-3">
+                    <label for="bank" class="form-label">Bank</label>
+                    <input type="text" id="bank" class="form-control"  th:field="*{wallet.bank}"
+                           required>
+                    <p th:if="${#fields.hasErrors('wallet.bank')}" class="text-danger"></p>
+                </div>
+                <div class="mb-3">
+                    <label for="money" class="form-label">Money on credit card</label>
+                    <input type="number" id="money" class="form-control"
+                           th:field="*{wallet.money}" required>
+                    <p th:if="${#fields.hasErrors('wallet.money')}" class="text-danger"></p>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+                <div class="d-grid gap-2 mt-3">
+                    <button onclick="redirectToLogin()" type="button" class="btn btn-outline-info">LOGIN</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+    function redirectToLogin() {
+        window.location.href = "/projekat/login";
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous">
+</script>
+</body>
+
+</html>
